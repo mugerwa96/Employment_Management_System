@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\User;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -26,7 +27,7 @@ class UserIndex extends Component
                 'username' => 'required|string|min:5|max:10|unique:users,username',
                 'firstname' => 'required|string|min:5|max:10',
                 'lastname' => 'required|string|min:5|max:10',
-                'email' => 'required|email'
+                'email' =>'required|email|regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/'
             ],
             [
                 'username.required' => 'Username is required please',
@@ -53,7 +54,7 @@ class UserIndex extends Component
         $user->firstname=$this->firstname;
         $user->lastname=$this->lastname;
         $user->email=$this->email;
-        $user->password=12345678;
+        $user->password=Hash::make(12345678);
         $user->save();
         $this->dispatchBrowserEvent('message',[
             'text'=>'User created successfully',

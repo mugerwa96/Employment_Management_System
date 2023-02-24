@@ -53,7 +53,7 @@
                                                 <button class="btn btn-sm btn-success">Edit</button>
                                               
                                                 <button wire:click="deleteUser({{ $user->id }})"
-                                                    class="btn btn-sm btn-danger">Delete</button>
+                                                    class="btn btn-sm btn-danger "disabled>Delete</button>
                                             </div>
                                         </td>
                                     </tr>
