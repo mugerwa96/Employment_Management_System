@@ -4,7 +4,7 @@
      <a href="index3.html" class="brand-link">
          <img src="{{ asset('AdminPanel/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
              class="brand-image img-circle elevation-3" style="opacity: .8">
-         <span class="brand-text font-weight-light">LARAVEL SYSTEM </span>
+         <span class="brand-text font-weight-light">EMP SYSTEM </span>
      </a>
 
      <!-- Sidebar -->
@@ -16,7 +16,7 @@
                      alt="User Image">
              </div>
              <div class="info">
-                 <a href="#" class="d-block">Alexander Pierce</a>
+                 <a href="#" class="d-block">{{ Str::upper(Auth::user()->username) }}</a>
              </div>
          </div>
 
@@ -32,48 +32,86 @@
                      <a href="#" class="nav-link">
                          <i class="nav-icon far fa-envelope"></i>
                          <p>
-                             Users <span class="badge badge-success mx-2">12</span>
+                             Employee Mangt <span class="badge badge-success mx-2">12</span>
+                             <i class="fas fa-angle-left right"></i>
+                         </p>
+                     </a>
+                   
+                 </li>
+
+                
+                 {{-- system management --}}
+                 <li class="nav-item">
+                     <a href="#" class="nav-link">
+                         <i class="nav-icon fas fa-cog"></i>
+                         <p>
+                             System Management
                              <i class="fas fa-angle-left right"></i>
                          </p>
                      </a>
                      <ul class="nav nav-treeview">
                          <li class="nav-item">
-                             <a href="pages/mailbox/mailbox.html" class="nav-link">
-                                 <i class="fas fa-hand-point-right nav-icon"></i>
-                                 <p>Inbox</p>
+                             <a href="{{ route('country.index') }}" class="nav-link">
+                                 <i class="fas fa-user nav-icon mx-2"></i>
+                                 <p>Country</p>
                              </a>
                          </li>
-                         <li class="nav-item">
-                             <a href="pages/mailbox/compose.html" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Compose</p>
+                         <li class="nav-item fw-bold">
+                             <a href="" class="nav-link">
+                                 <i class="fas fa-user nav-icon mx-2"></i>
+                                 <p>State</p>
                              </a>
                          </li>
-                         <li class="nav-item">
-                             <a href="pages/mailbox/read-mail.html" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Read</p>
+                         <li class="nav-item fw-bold">
+                             <a href="" class="nav-link">
+                                 <i class="fas fa-user nav-icon mx-2"></i>
+                                 <p>Department</p>
+                             </a>
+                         </li>
+                         <li class="nav-item fw-bold">
+                             <a href="" class="nav-link">
+                                 <i class="fas fa-user nav-icon mx-2"></i>
+                                 <p>City</p>
                              </a>
                          </li>
                      </ul>
                  </li>
+                 {{-- !system management --}}
 
+                 {{-- User management --}}
                  <li class="nav-item">
-                     <a href="pages/gallery.html" class="nav-link">
-                         <i class="nav-icon far fa-image"></i>
+                     <a href="#" class="nav-link">
+                         <i class="nav-icon fas fa-user"></i>
                          <p>
-                             Gallery
+                             User managment
+                             <i class="fas fa-angle-left right"></i>
                          </p>
                      </a>
+                     <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                             <a href="{{ route('users.index') }}" class="nav-link">
+                                 <i class="fas fa-users nav-icon mx-2"></i>
+                                 <p>Users</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="" class="nav-link">
+                                 <i class="fas fa-users nav-icon mx-2"></i>
+                                 <p>Role</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="" class="nav-link">
+                                <i class="fa-regular fa-triangle nav-icon"></i>
+                                 <p>Permission</p>
+                             </a>
+                         </li>
+                       
+
+
+                     </ul>
                  </li>
-                 <li class="nav-item">
-                     <a href="pages/kanban.html" class="nav-link">
-                         <i class="nav-icon fas fa-columns"></i>
-                         <p>
-                             Kanban Board
-                         </p>
-                     </a>
-                 </li>
+                 {{-- settings --}}
                  <li class="nav-item">
                      <a href="#" class="nav-link">
                          <i class="nav-icon fas fa-cogs"></i>
@@ -83,27 +121,27 @@
                          </p>
                      </a>
                      <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('profile') }}" class="nav-link">
-                                <i class="fas fa-user nav-icon mx-2"></i>
-                                <p>My profile</p>
-                            </a>
-                        </li>
                          <li class="nav-item">
-                           
-                                 <a class="nav-link text-danger fw-bold " href="{{ route('logout') }}"
-                                     onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                                      <i class="fas fa-power-off nav-icon text-danger fw-bold mx-2"></i>{{ __('Logout') }}
-                                 </a>
-
-                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                     @csrf
-                                 </form>
+                             <a href="{{ route('profile') }}" class="nav-link">
+                                 <i class="fas fa-user nav-icon mx-2"></i>
+                                 <p>My profile</p>
+                             </a>
                          </li>
-                       
-                       
-                         
+                         <li class="nav-item fw-bold">
+
+                             <a class="nav-link text-danger fw-bold " href="{{ route('logout') }}"
+                                 onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                                 <i class="fas fa-power-off nav-icon text-danger fw-bold mx-2"></i>{{ __('Logout') }}
+                             </a>
+
+                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                 @csrf
+                             </form>
+                         </li>
+
+
+
                      </ul>
                  </li>
 

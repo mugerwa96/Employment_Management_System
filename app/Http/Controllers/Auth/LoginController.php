@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
+    protected $maxAttempts= 1 ;
+    protected $decayMinutes=1;
     /*
     |--------------------------------------------------------------------------
     | Login Controller

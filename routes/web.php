@@ -1,5 +1,12 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Livewire\Country\Countryindex;
+use App\Http\Livewire\User\Index;
+use App\Http\Livewire\User\UserCreate;
+use App\Http\Livewire\User\UserEdit;
+use App\Http\Livewire\User\UserIndex;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +26,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::controller(HomeController::class)
+->middleware('auth')
+->group(function(){
+    Route::get('/home','index')->name('home');
+    Route::get('/profile','profile')->name('profile');
+    Route::get('/users',UserIndex::class)->name('users.index');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/profile',[App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+
+    // country  routes
+    Route::get('country',Countryindex::class)->name('country.index');
+});
+
+
 

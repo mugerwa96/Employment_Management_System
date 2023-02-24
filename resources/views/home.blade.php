@@ -1,5 +1,8 @@
 @extends('layouts.AdminPanel.layout.admin')
-
+@section('content-header')
+Dash Board
+    
+@endsection
 @section('main-content')
 <div class="container-fluid">
     <!-- Small boxes (Stat box) -->
